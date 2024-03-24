@@ -13,10 +13,56 @@
 
     <properties>
         <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+        <jaxb.version>2.3.0</jaxb.version>
+        <apache-commons.version>3.8.1</apache-commons.version>
     </properties>
 
     <dependencies>
-
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>${jaxb.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-core</artifactId>
+            <version>${jaxb.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>${jaxb.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${apache-commons.version}</version>
+        </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <!--                <groupId>org.jvnet.jaxb2.maven2</groupId>-->
+                <!--                <artifactId>maven-jaxb2-plugin</artifactId>-->
+                <groupId>org.jvnet.jaxb</groupId>
+                <artifactId>jaxb-maven-plugin</artifactId>
+                <version>2.0.9</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <schemaDirectory>${project.basedir}/src/main/resources/xsd</schemaDirectory>
+                            <generatePackage>com.emat.model</generatePackage>
+                            <schemaIncludes>
+                                <include>shippingaddress.xsd</include>
+                            </schemaIncludes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
