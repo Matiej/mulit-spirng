@@ -28,7 +28,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -49,6 +48,42 @@
 
     <build>
         <plugins>
+            <!-- Maven Git Commit ID Plugin Configuration -->
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <version>4.9.10</version> <!-- Specify the version of the plugin -->
+
+                <executions>
+                    <execution>
+                        <!-- The 'revision' goal collects the Git repository state -->
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+                <configuration>
+                    <!-- Generate a git.properties file with Git information -->
+                    <generateGitPropertiesFile>true</generateGitPropertiesFile>
+
+                    <!-- Path to where the git.properties file will be generated -->
+                    <!-- This places the file in the target/classes directory, making it part of the build artifact -->
+                    <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
+
+                    <!-- Prevent build failure if the project is not in a Git repository -->
+                    <failOnNoGitDirectory>false</failOnNoGitDirectory>
+
+                    <!-- Additional configuration options can be specified here -->
+
+                    <!-- Example: Set the dateFormat for git.commit.time -->
+                    <!-- <dateFormat>yyyy-MM-dd'T'HH:mm:ssZ</dateFormat> -->
+
+                    <!-- Example: Set the prefix to be used for the properties in git.properties -->
+                    <!-- <prefix>git</prefix> -->
+
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
