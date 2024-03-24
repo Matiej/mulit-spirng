@@ -6,19 +6,17 @@
         <artifactId>multi-spirng</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+
     <artifactId>web-module-model</artifactId>
-    <packaging>war</packaging>
-    <name>web-model Maven Webapp</name>
-    <url>http://maven.apache.org</url>
+    <packaging>jar</packaging>
+    <name>Web Model Module</name>
+
+    <properties>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+    </properties>
+
     <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>3.8.1</version>
-            <scope>test</scope>
-        </dependency>
+
     </dependencies>
-    <build>
-        <finalName>web-model</finalName>
-    </build>
+
 </project>
